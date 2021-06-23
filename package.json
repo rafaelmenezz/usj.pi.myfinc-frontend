@@ -15,6 +15,8 @@
     "font-awesome": "^4.7.0",
     "vue": "^2.6.11",
     "vue-gravatar": "^1.4.1",
+    "vue-router": "^3.5.2",
+    "vue-toasted": "^1.1.24",
     "vuex": "^3.6.2",
     "vuikit": "^0.8.10"
   },
