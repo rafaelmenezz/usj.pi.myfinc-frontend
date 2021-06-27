@@ -1,9 +1,9 @@
 <template>
-  <nav class="nav nav-masthead justify-content-center">
-    <router-link class="nav-link"  :class="{ active: isActive('/')}"   to="/"> home </router-link>
-    <router-link class="nav-link"  :class="{ active: isActive('/about')}"  to="/about"> sobre </router-link>
-    <router-link class="nav-link"  :class="{ active: isActive('/login')}"  to="/login"> login </router-link>
-  </nav>
+  <div class="nave nave-masthead justify-content-center uk-margin-top uk-align-right">
+    <router-link class="nave-link"  :class="{ active: isActive('/')}"   to="/"> home </router-link>
+    <router-link class="nave-link"  :class="{ active: isActive('/about')}"  to="/about"> sobre </router-link>
+    <router-link class="nave-link"  :class="{ active: isActive('/login')}"  to="/login"> login </router-link>
+  </div>
 </template>
 
 <script>
@@ -20,10 +20,10 @@ export default {
         }
     }
 }
-</script>
+</script> 
 
 <style scoped>
-.nav-masthead .nav-link {
+.nave-masthead .nave-link {
   padding: 0.25rem 0;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.5);
@@ -32,18 +32,18 @@ export default {
 }
 
 
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
+.nave-masthead .nave-link:hover,
+.nave-masthead .nave-link:focus {
   border-bottom-color: #fff;
   text-decoration: none;
   color: #fff;
 }
 
-.nav-masthead .nav-link + .nav-link {
+.nave-masthead .nave-link + .nave-link {
   margin-left: 1rem;
 }
 
-.nav-masthead .active {
+.nave-masthead .active {
   color: #fff;
   border-bottom-color:  #fff;
 }

@@ -1,6 +1,6 @@
 <template>
-  <main role="main" class="uk-margin-large-top" >
-   <router-view></router-view>
+  <main role="main" class="uk-margin-large-top main uk-margin-auto" >
+   <router-view name="mainApp"></router-view>
   </main>
 </template>
 
@@ -11,6 +11,8 @@ export default {
 </script>
 
 <style scoped>
-
+.main{
+  width: 50vw;
+}
 
 </style>

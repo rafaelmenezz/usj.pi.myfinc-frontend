@@ -3,7 +3,9 @@ import 'font-awesome/css/font-awesome.css';
 
 import Vue from 'vue'
 import App from './App.vue'
-import Home from './Home.vue'
+import Index from './Home.vue'
+
+
 
 import './config/axios'
 import './config/msgs'
@@ -18,8 +20,15 @@ Vue.config.productionTip = false
 
 
 const routes = {
-  '/': Home,
-  '/myfinc': App
+
+  '/': App,
+  '/myfinc': Index,
+  '/sobre': App,
+  '/login': App,
+  '/myfinc/mural': Index,
+  '/myfinc/perfil': Index,
+  '/myfinc/receita': Index,
+  '/myfinc/despesa': Index,
 }
 
 new Vue({
@@ -39,3 +48,9 @@ new Vue({
 
   render (h) { return h(this.ViewComponent) }
 })
+
+// new Vue({
+//   store,
+//   router,
+//   render: h => h(App)
+// }).$mount('#app')

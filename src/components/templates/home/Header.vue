@@ -1,30 +1,35 @@
 <template>
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">
-         <router-link class="nav-link" to="/">  <img src="@/assets/imagens/logo_branca.svg" width="64" alt="" /> </router-link>
-       
-      </h3>
+  <header class="header uk-margin-auto" uk-grid>
+    <div class="uk-width-2-3 uk-text-left">
+      <router-link class="nav-link" to="/">
+        <img
+          class="uk-margin-top"
+          src="@/assets/imagens/logo_branca.svg"
+          width="64"
+          alt=""
+        />
+      </router-link>
+    </div>
+    <div>
       <Navegacao />
     </div>
   </header>
 </template>
 
 <script>
-
-import Navegacao from '@/components/templates/home/Navegacao'
+import Navegacao from "@/components/templates/home/Navegacao";
 
 export default {
   name: "Header",
   components: {
-    Navegacao
-  }
+    Navegacao,
+  },
 };
 </script>
 
 <style scoped>
-.masthead {
-  margin-bottom: 2rem;
+.header {
+  width: 55vw;
 }
 
 .masthead-brand {
@@ -52,14 +57,5 @@ export default {
 .nav-masthead .active {
   color: #fff;
   border-bottom-color: #fff;
-}
-
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
 }
 </style>

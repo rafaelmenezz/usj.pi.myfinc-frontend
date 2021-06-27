@@ -1,63 +1,76 @@
 <template>
-  <div id="app">
-    <div class="uk-container uk-width-2-3 uk-margin-top">
-      <Header />
-      <Main />
-      <Footer />
+  <div id="app" class="uk-margin-remove">
+    <Loading v-if="validatingToken" />
+    <div v-else>
+       <div class="corpo" uk-grid>
+      <Menu />
+      <router-view name="home"></router-view>
+     
     </div>
   </div>
+    </div>
+   
 </template>
-
 <script>
-import Header from "@/components/templates/home/Header";
-import Main from "@/components/templates/home/Main";
-import Footer from "@/components/templates/home/Footer";
+import axios from "axios"
+import { baseApiUrl, userKey } from "@/global"
+import Menu from "@/components/templates/app/Aside";
+import Loading from "@/components/templates/app/Loading"
 
 export default {
   name: "App",
-  components: {
-    Header,
-    Main,
-    Footer,
-  },
+  components: { Menu, Loading },
+  data: function() {
+		return {
+			validatingToken: true
+		}
+	},
+  methods: {
+		async validateToken() {
+			this.validatingToken = true
+			const json = localStorage.getItem(userKey)
+			const userData = JSON.parse(json)
+			this.$store.commit('setUser', null)
+			if(!userData) {
+				this.validatingToken = false
+	
+				return
+			}
+			const res = await axios.post(`${baseApiUrl}/validateToken`, userData)
+			if (res.data) {
+				this.$store.commit('setUser', userData)
+	
+			} else {
+				localStorage.removeItem(userKey)
+				this.$router.push({ name: '/login' })
+			}
+			this.validatingToken = false
+		}
+	},
+	created() {
+		this.validateToken()
+	}
 };
 </script>
 
 <style scoped>
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
-text-center {
-  text-align: center !important;
-}
-
-
-
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: 0.05rem solid #fff;
-}
-
 #app {
-
+  -ms-flex-pack: center;
   -webkit-box-pack: center;
   justify-content: center;
-  color: #fff;
-  margin: 0;
-  background-color: #333;
-  text-shadow: 0 0.05rem 0.1rem rgb(0 0 0 / 50%);
-  box-shadow: inset 0 0 5rem rgb(0 0 0 / 50%);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
+  color: #3c4858;
+  font-weight: 300;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  text-align: center;
+  height: 100vh;
+  background-color: #eee;
+}
+.corpo {
+  width: 100vw;
 }
 
-
+.main {
+  height: 100vh;
+}
 </style>
